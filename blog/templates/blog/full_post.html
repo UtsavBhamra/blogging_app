@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{individual_post.title}}</title>
+</head>
+<body>
+    {% load markdown_extras %}
+    <div class="title">{{individual_post.title}}</div>
+    <div class="author">-by {{individual_post.author}}</div>
+    <div class="dates">published at {{individual_post.published_date}}</div>
+    <div class="details">{{individual_post.text|markdown }}</div>
+</body>
+</html>

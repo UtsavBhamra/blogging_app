@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IEEE blog</title>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1 id="main-heading">IEEE blogs</h1>
+            
+        </header>
+
+        {% load markdown_extras %}
+        {% for post in posts %}
+        <article>
+            <h2><a href='blogs/{{post.id}}'>{{post.title}}</a></h2>
+            <strong>by {{post.author}}</strong><br>
+            <time>Published: {{post.published_date}}</time>
+            <p>{{ post.text|markdown }}</p>
+        </article>
+        <hr>
+        {% endfor %}
+
+    </body>
+</html>

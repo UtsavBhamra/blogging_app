@@ -1,0 +1,11 @@
+body {
+    background-color:grey;
+}
+
+#main-heading {
+    color:blue;
+}
+
+article>h2>a {
+    text-decoration:none;
+}
