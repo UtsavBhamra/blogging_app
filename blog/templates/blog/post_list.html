@@ -9,16 +9,22 @@
     <body>
         <header>
             <h1 id="main-heading">IEEE blogs</h1>
-            
         </header>
+
+        <div>
+            <h3>Tags-</h3>
+            {% for tag in tags %}
+            <a href="{% url 'tagged_blog' tag.id %}">{{tag.tag_name}}</a>{{'  '}}
+            {% endfor %}
+        </div>
 
         {% load markdown_extras %}
         {% for post in posts %}
         <article>
-            <h2><a href='blogs/{{post.id}}'>{{post.title}}</a></h2>
+            <h2><a href='{% url 'full_post' post.id %}'>{{post.title}}</a></h2>
             <strong>by {{post.author}}</strong><br>
             <time>Published: {{post.published_date}}</time>
-            <p>{{ post.text|markdown }}</p>
+            <!-- <p>{{ post.text|markdown }}</p> -->
         </article>
         <hr>
         {% endfor %}
