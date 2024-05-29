@@ -18,9 +18,10 @@ def full_post(request,id):
 def upload_blog(request):
     if request.method == 'POST':
         form = blog_form(request.POST)
-        form.author = request.user
         if form.is_valid():
-            form.save()
+            blog_post = form.save(commit=False)
+            blog_post.author = request.user
+            blog_post.save()
             return redirect('post_list')
     else:
         form=blog_form()
