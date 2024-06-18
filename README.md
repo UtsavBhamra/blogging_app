@@ -2,9 +2,9 @@
 
 ## Table of Contents-
 
-- [Description](Description)
-- [Prerequisites](Prerequisites)
-- [Installation](Installation)
+- [Description](#Description)
+- [Prerequisites](#Prerequisites)
+- [Installation](#Installation)
 
 ## Description-
 
@@ -21,7 +21,7 @@ This is a guide to install and setup the blog app on your local computer.
 
 1. First fork and clone the following repository to your local machine
 
-https://github.com/UtsavBhamra/envision_blog
+   https://github.com/UtsavBhamra/envision_blog
 
 2. Creating and activating a virtual env, Run the following commands
 
