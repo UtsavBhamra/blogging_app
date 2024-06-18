@@ -1,13 +1,20 @@
 from django.shortcuts import render,redirect
 from .models import Post,Tag
-from .forms import blog_form,tag_form
+from .forms import blog_form
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.template import Context, Template
+from django.core.paginator import Paginator
+
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    paginator = Paginator(posts,3)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     tags = Tag.objects.all()
-    return render(request,'blog/post_list.html',{'posts':posts,'tags':tags})
+    return render(request,'blog/post_list.html',{'posts':posts,'tags':tags,"page_obj": page_obj})
 
 
 def full_post(request,id):
@@ -27,18 +34,6 @@ def upload_blog(request):
         form=blog_form()
 
     return render(request,'blog/post_upload.html',{'form':form})
-
-@login_required
-def upload_tag(request):
-    if request.method == 'POST':
-        form = tag_form(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('post_list')
-    else:
-        form=tag_form()
-
-    return render(request,'blog/tag_upload.html',{'form':form})
 
 
 def tagged_blog(request,specific_tag):

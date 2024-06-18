@@ -6,5 +6,4 @@ urlpatterns = [
     path('blogs/<int:id>',views.full_post,name='full_post'),
     path('blogs/upload',views.upload_blog,name='upload_blog'),
     path('tags/<int:specific_tag>',views.tagged_blog,name='tagged_blog'),
-    path('tags/upload',views.upload_tag,name='upload_tag'),
 ]

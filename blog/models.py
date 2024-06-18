@@ -2,12 +2,19 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
-TAG_CHOICES = {
-    'CompSoc':'CompSoc',
-    'Diode':'Diode',
-    'Piston':'Piston',
-    'Aviation':'Aviation'
-}
+# TAG_CHOICES = {
+#     'CompSoc':'CompSoc',
+#     'Diode':'Diode',
+#     'Piston':'Piston',
+#     'Aviation':'Aviation'
+# }
+
+TAG_CHOICES=[
+    ('CompSoc','CompSoc'),
+    ('Diode','Diode'),
+    ('Piston','Piston'),
+    ('Aviation','Aviation')
+]
 
 class Tag(models.Model):
     tag_name = models.CharField(max_length=50,choices=TAG_CHOICES)
@@ -23,7 +30,6 @@ class Post(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True,null=True)
     
-
     def publish(self):
         self.published_date=timezone.now()
         self.save()
